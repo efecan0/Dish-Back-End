@@ -81,7 +81,7 @@ favoriteRouter.route('/:dishId')
         if(favorite) {
             var favoriteIndex = favorite.dihses.indexOf(req.params.dishId);
             if( favoriteIndex === -1) {
-                favorite.dihses.push(req.params.dishId)
+                favorite.dishes.push(req.params.dishId)
                 favorite.save()
                 .then((favorite) => {
                     console.log('Favorite Created ', favorite);
@@ -121,7 +121,7 @@ favoriteRouter.route('/:dishId')
                 favorite.dishes.splice(favoriteIndex, 1);
                 favorite.save()
                 .then((favorite) => {
-                    console.log('Favorite Created');
+                    console.log('Favorite Deleted');
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
                     res.json(favorite);
