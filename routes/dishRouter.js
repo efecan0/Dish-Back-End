@@ -117,7 +117,7 @@ dishRouter.route('/:dishId/comments')
         res.end('PUT operation is not supported on /dishes/' + req.params.dishId + '/comments');
     })
 
-    .delete(cors.corsWithOptions, authenticate.verifyAdmin, (req, res, next) => {
+    .delete(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
         Dishes.findById(req.params.dishId).then((dish) => {
             if (dish != null) {
                 console.log(dish);
